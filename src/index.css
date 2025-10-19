@@ -1,0 +1,36 @@
+@import "tailwindcss";
+/* This is the recipe for our animation.
+  - @keyframes tells the browser we're defining animation steps.
+  - We're calling it "fadeIn".
+  - It starts at 0% opacity (invisible) and ends at 100% opacity (fully visible).
+*/
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* This creates a new utility class that we can use in our components.
+  - We're calling it .animate-fade-in.
+  - It tells any element with this class to use our "fadeIn" recipe,
+    take 0.5 seconds to do it, and use an "ease-out" timing.
+*/
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- NEW SPINNER STYLES --- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+
