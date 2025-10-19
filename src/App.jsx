@@ -32,6 +32,16 @@ function App() {
     }
     // Note: No 'weatherData' in dependency array to avoid loop on initial load
   }, [units]); // The magic: this [] array tells React to run this code ONLY when `units` changes.
+  // --- ADD THIS NEW BLOCK DIRECTLY BELOW IT ---
+  useEffect(() => {
+    // We only run this if we DON'T have weather data yet (i.e., the app just started).
+    // This prevents it from running again after the user searches for a city.
+    if (!weatherData && !error) {
+      // This function already handles asking for permission and fetching data.
+      // We are simply calling it automatically on page load.
+      handleLocationClick(); 
+    }
+  }, []); // The empty array [] means "Run this function ONLY once when the component loads."
 
   const getBackgroundClass = (weather) => {
     // ... (this function stays the same)
